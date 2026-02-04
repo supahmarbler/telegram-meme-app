@@ -102,7 +102,7 @@ export function MarketCard({ market }: MarketCardProps) {
         <div className="grid grid-cols-2 gap-2 mb-3">
           <div
             className="rounded-lg py-2.5 px-3 text-center shadow-md"
-            style={{ background: '#71BAFF8A' }}
+            style={{ background: '#71BAFF8A', border: '2px solid transparent' }}
           >
             <span className="text-white font-bebas text-lg tracking-wider">
               {market.labelYes}

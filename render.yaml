@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: telegram-meme-mock-api
+    env: node
+    buildCommand: npm install --production
+    startCommand: node mock-server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001

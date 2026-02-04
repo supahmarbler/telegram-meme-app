@@ -19,24 +19,24 @@ export function MarketsPage() {
     <AppLayout>
       <div className="pb-4">
         {/* Filter Tabs */}
-        <div className="sticky top-[57px] bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 z-10">
+        <div className="sticky top-[57px] bg-gray-900 border-b border-gray-700 z-10">
           <div className="flex">
             <button
               onClick={() => setActiveTab('active')}
-              className={`flex-1 py-3 px-4 font-medium transition-colors ${
+              className={`flex-1 py-2.5 px-4 font-archivo font-semibold transition-all ${
                 activeTab === 'active'
-                  ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400'
-                  : 'text-gray-600 dark:text-gray-400'
+                  ? 'text-blue-500 border-b-2 border-blue-500'
+                  : 'text-gray-400 hover:text-gray-300'
               }`}
             >
               Active
             </button>
             <button
               onClick={() => setActiveTab('my-bets')}
-              className={`flex-1 py-3 px-4 font-medium transition-colors ${
+              className={`flex-1 py-2.5 px-4 font-archivo font-semibold transition-all ${
                 activeTab === 'my-bets'
-                  ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400'
-                  : 'text-gray-600 dark:text-gray-400'
+                  ? 'text-blue-500 border-b-2 border-blue-500'
+                  : 'text-gray-400 hover:text-gray-300'
               }`}
             >
               My Bets
@@ -48,16 +48,16 @@ export function MarketsPage() {
         <div className="p-4 space-y-4">
           {isLoading ? (
             <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-blue-600 mx-auto mb-4"></div>
-              <p className="text-gray-600 dark:text-gray-400">Loading markets...</p>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-blue-500 mx-auto mb-4"></div>
+              <p className="text-gray-400">Loading markets...</p>
             </div>
           ) : displayedMarkets.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-gray-600 dark:text-gray-400 text-lg mb-2">
+              <p className="text-gray-300 text-lg mb-2 font-bold">
                 {activeTab === 'my-bets' ? 'No active bets yet' : 'No markets available'}
               </p>
               {activeTab === 'my-bets' && (
-                <p className="text-sm text-gray-500 dark:text-gray-500">
+                <p className="text-sm text-gray-400">
                   Browse active markets to place your first bet!
                 </p>
               )}

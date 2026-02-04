@@ -34,13 +34,13 @@ export function LoadingPage() {
   }, [isSuccess, isAuthenticated, navigate]);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+    <div className="min-h-screen bg-gray-950 flex items-center justify-center">
       <div className="text-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mx-auto mb-4"></div>
-        <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+        <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-500 mx-auto mb-4"></div>
+        <h2 className="text-xl font-black text-white uppercase tracking-tight">
           Loading Meme Prediction...
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">
+        <p className="text-gray-400 mt-2 font-semibold">
           Please wait while we set up your account
         </p>
       </div>

@@ -219,7 +219,7 @@ app.post('/prediction_markets/buy', (req, res) => {
   }
 
   const userId = userIdMatch[1];
-  const market = markets.find(m => m.id === marketId);
+  const market = markets.find(m => m.market_id === marketId);
 
   if (!market) {
     return res.status(404).json({ error: 'Market not found' });

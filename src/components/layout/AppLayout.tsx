@@ -10,7 +10,7 @@ interface AppLayoutProps {
 
 export function AppLayout({ children, showTabBar = true }: AppLayoutProps) {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div className="min-h-screen bg-gray-950 text-gray-100">
       <Header />
       <main className={`${showTabBar ? 'pb-16' : ''}`}>{children}</main>
       {showTabBar && <TabBar />}

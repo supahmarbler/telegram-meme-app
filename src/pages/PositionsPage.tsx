@@ -16,19 +16,19 @@ export function PositionsPage() {
   return (
     <AppLayout>
       <div className="p-4 pb-20">
-        <h1 className="text-2xl font-bold mb-6">Your Positions</h1>
+        <h1 className="text-3xl font-bebas mb-6 text-white tracking-wider">YOUR POSITIONS</h1>
 
         {isLoading ? (
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600 dark:text-gray-400">Loading positions...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-400">Loading positions...</p>
           </div>
         ) : marketsWithPositions.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-600 dark:text-gray-400 text-lg mb-2">
+            <p className="text-gray-300 text-lg mb-2 font-bold">
               No active positions yet
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-500 mb-6">
+            <p className="text-sm text-gray-400 mb-6">
               Browse markets and place your first bet!
             </p>
             <Button onClick={() => navigate('/markets')}>
@@ -44,38 +44,38 @@ export function PositionsPage() {
 
               return (
                 <Card key={market.id} onClick={() => navigate(`/markets/${market.id}`)}>
-                  <h3 className="font-bold text-lg mb-3 line-clamp-2">{market.title}</h3>
+                  <h3 className="font-black text-lg mb-3 line-clamp-2 text-white uppercase tracking-tight">{market.title}</h3>
 
                   <div className="space-y-2 mb-3">
                     {hasYesShares && (
-                      <div className="flex items-center justify-between bg-green-50 dark:bg-green-900 p-2 rounded">
-                        <span className="text-sm">YES Shares</span>
-                        <span className="font-bold text-green-600 dark:text-green-400">
+                      <div className="flex items-center justify-between bg-gradient-to-r from-green-900 to-green-800 p-3 rounded-xl border border-green-700">
+                        <span className="text-sm font-bold text-green-300 uppercase tracking-wide">YES Shares</span>
+                        <span className="font-black text-white text-lg">
                           {position.sharesYes.toFixed(2)}
                         </span>
                       </div>
                     )}
 
                     {hasNoShares && (
-                      <div className="flex items-center justify-between bg-red-50 dark:bg-red-900 p-2 rounded">
-                        <span className="text-sm">NO Shares</span>
-                        <span className="font-bold text-red-600 dark:text-red-400">
+                      <div className="flex items-center justify-between bg-gradient-to-r from-red-900 to-red-800 p-3 rounded-xl border border-red-700">
+                        <span className="text-sm font-bold text-red-300 uppercase tracking-wide">NO Shares</span>
+                        <span className="font-black text-white text-lg">
                           {position.sharesNo.toFixed(2)}
                         </span>
                       </div>
                     )}
                   </div>
 
-                  <div className="flex items-center justify-between pt-3 border-t border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center justify-between pt-3 border-t border-gray-700">
                     <div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">Current Value</div>
-                      <div className="font-bold">{position.currentValue.toLocaleString()}</div>
+                      <div className="text-xs text-gray-400 uppercase tracking-wide font-semibold">Current Value</div>
+                      <div className="font-black text-white text-lg">{position.currentValue.toLocaleString()}</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-xs text-gray-500 dark:text-gray-400">P/L</div>
+                      <div className="text-xs text-gray-400 uppercase tracking-wide font-semibold">P/L</div>
                       <div
-                        className={`font-bold ${
-                          position.profitLoss >= 0 ? 'text-green-600' : 'text-red-600'
+                        className={`font-black text-lg ${
+                          position.profitLoss >= 0 ? 'text-green-400' : 'text-red-400'
                         }`}
                       >
                         {position.profitLoss >= 0 ? '+' : ''}

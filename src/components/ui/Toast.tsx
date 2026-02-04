@@ -22,20 +22,20 @@ interface ToastProps {
 }
 
 function Toast({ toast, onClose }: ToastProps) {
-  const bgColors = {
-    success: 'bg-green-500',
-    error: 'bg-red-500',
-    info: 'bg-blue-500',
+  const styles = {
+    success: 'bg-gradient-to-r from-green-600 to-emerald-600 border-green-500',
+    error: 'bg-gradient-to-r from-red-600 to-pink-600 border-red-500',
+    info: 'bg-gradient-to-r from-blue-600 to-purple-600 border-blue-500',
   };
 
   return (
     <div
-      className={`${bgColors[toast.type]} text-white px-4 py-3 rounded-lg shadow-lg flex items-center justify-between min-w-[300px] max-w-md animate-slide-in`}
+      className={`${styles[toast.type]} text-white px-4 py-3 rounded-xl shadow-2xl border-2 flex items-center justify-between min-w-[300px] max-w-md animate-slide-in`}
     >
-      <span className="flex-1">{toast.message}</span>
+      <span className="flex-1 font-bold">{toast.message}</span>
       <button
         onClick={onClose}
-        className="ml-4 text-white hover:text-gray-200 font-bold"
+        className="ml-4 text-white hover:text-gray-200 font-black text-lg"
       >
         ✕
       </button>

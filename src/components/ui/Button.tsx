@@ -16,13 +16,13 @@ export function Button({
   className = '',
   ...props
 }: ButtonProps) {
-  const baseStyles = 'font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseStyles = 'font-bebas tracking-wider rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variantStyles = {
-    primary: 'bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700',
-    secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 active:bg-gray-400',
-    success: 'bg-green-500 text-white hover:bg-green-600 active:bg-green-700',
-    danger: 'bg-red-500 text-white hover:bg-red-600 active:bg-red-700',
+    primary: 'bg-blue-600 text-white hover:bg-blue-700 active:scale-95',
+    secondary: 'bg-gray-700 text-white hover:bg-gray-600 active:scale-95',
+    success: 'bg-green-600 text-white hover:bg-green-700 active:scale-95',
+    danger: 'bg-red-600 text-white hover:bg-red-700 active:scale-95',
   };
 
   const sizeStyles = {

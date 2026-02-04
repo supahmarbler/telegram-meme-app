@@ -17,7 +17,7 @@ export function TabBar() {
   const location = useLocation();
 
   return (
-    <nav className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 fixed bottom-0 left-0 right-0 z-10">
+    <nav className="bg-gray-900 border-t border-gray-700 fixed bottom-0 left-0 right-0 z-10">
       <div className="flex items-center justify-around h-16">
         {tabs.map((tab) => {
           const isActive = location.pathname.startsWith(tab.path);
@@ -27,12 +27,12 @@ export function TabBar() {
               to={tab.path}
               className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
                 isActive
-                  ? 'text-blue-600 dark:text-blue-400'
-                  : 'text-gray-500 dark:text-gray-400'
+                  ? 'text-blue-500'
+                  : 'text-gray-500 hover:text-gray-400'
               }`}
             >
-              <span className="text-2xl mb-1">{tab.icon}</span>
-              <span className="text-xs font-medium">{tab.label}</span>
+              <span className="text-2xl mb-0.5">{tab.icon}</span>
+              <span className="text-xs font-archivo font-medium">{tab.label}</span>
             </Link>
           );
         })}

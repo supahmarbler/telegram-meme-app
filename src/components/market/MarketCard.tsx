@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import type { PredictionMarket } from '../../api/types';
-import { Card } from '../ui/Card';
 
 interface MarketCardProps {
   market: PredictionMarket;
@@ -11,65 +10,140 @@ export function MarketCard({ market }: MarketCardProps) {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    const now = new Date();
-    const diff = date.getTime() - now.getTime();
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-    if (days > 0) {
-      return `${days}d ${hours}h`;
-    } else if (hours > 0) {
-      return `${hours}h`;
-    } else {
-      return 'Ending soon';
-    }
+    const day = date.getDate();
+    const month = date.toLocaleDateString('en-US', { month: 'short' });
+    return `${day} ${month}`;
   };
 
-  const hasPosition = market.userPosition && (
-    market.userPosition.sharesYes > 0 || market.userPosition.sharesNo > 0
-  );
+  const formatVolume = (volume: number) => {
+    if (volume >= 1000000) {
+      return `${(volume / 1000000).toFixed(0)}M`;
+    } else if (volume >= 1000) {
+      return `${(volume / 1000).toFixed(0)}K`;
+    }
+    return volume.toString();
+  };
+
+  const priceYesPercent = Math.round(market.priceYes * 100);
+  const priceNoPercent = Math.round(market.priceNo * 100);
 
   return (
-    <Card onClick={() => navigate(`/markets/${market.id}`)}>
-      {market.imageUrl && (
-        <img
-          src={market.imageUrl}
-          alt={market.title}
-          className="w-full h-48 object-cover rounded-lg mb-3"
-        />
-      )}
+    <div
+      onClick={() => navigate(`/markets/${market.id}`)}
+      className="rounded-2xl p-1.5 cursor-pointer hover:scale-[1.01] transition-transform shadow-xl"
+      style={{
+        background: 'linear-gradient(360deg, #212936 0%, #4E596C 100%)',
+        boxShadow: '0px 4px 44px 0px rgba(255, 255, 255, 0.07), 0px 4px 12px 0px rgba(0, 0, 0, 0.72)'
+      }}
+    >
+      {/* Inner card body */}
+      <div
+        className="bg-[#191f29] rounded-xl p-3.5"
+        style={{
+          border: '1px solid rgba(136, 136, 136, 0.3)'
+        }}
+      >
+        {/* Market Image */}
+        {market.imageUrl && (
+          <div className="mb-3">
+            <img
+              src={market.imageUrl}
+              alt={market.title}
+              className="w-full h-40 object-cover rounded-lg"
+            />
+          </div>
+        )}
 
-      <div className="space-y-3">
-        <div>
-          <h3 className="font-bold text-lg line-clamp-2">{market.title}</h3>
-          {hasPosition && (
-            <span className="inline-block mt-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">
-              You have a position
+        {/* Market Title */}
+        <h3 className="text-white font-bebas text-2xl mb-3 leading-tight tracking-wide">
+          {market.title}
+        </h3>
+
+        {/* Progress Bar with Percentages */}
+        <div className="mb-3">
+          <div className="flex items-center gap-2 mb-1.5">
+            <span className="text-white font-archivo font-normal text-xs">{priceYesPercent}%</span>
+
+            {/* Progress Bar */}
+            <div
+              className="relative flex-1 rounded-full overflow-hidden"
+              style={{
+                height: '12px',
+                border: '0.7px solid rgba(255, 255, 255, 0.3)'
+              }}
+            >
+              <div
+                className="absolute top-0 left-0 h-full transition-all duration-300"
+                style={{
+                  width: `${priceYesPercent}%`,
+                  background: 'linear-gradient(270deg, #FFFAC0 4.33%, #AED8FF 24.52%, #71BAFF 62.02%)',
+                  boxShadow: 'inset 0 0 4px rgba(0, 0, 0, 0.5)',
+                  borderTopLeftRadius: '999px',
+                  borderBottomLeftRadius: '999px'
+                }}
+              />
+              <div
+                className="absolute top-0 right-0 h-full transition-all duration-300"
+                style={{
+                  width: `${priceNoPercent}%`,
+                  background: 'linear-gradient(90deg, #8398FF 24.52%, #4023C3 62.02%)',
+                  boxShadow: 'inset 0 0 4px rgba(0, 0, 0, 0.5)',
+                  borderTopRightRadius: '999px',
+                  borderBottomRightRadius: '999px'
+                }}
+              />
+            </div>
+
+            <span className="text-white font-archivo font-normal text-xs">{priceNoPercent}%</span>
+          </div>
+        </div>
+
+        {/* Option Buttons */}
+        <div className="grid grid-cols-2 gap-2 mb-3">
+          <div
+            className="rounded-lg py-2.5 px-3 text-center shadow-md"
+            style={{ background: '#71BAFF8A' }}
+          >
+            <span className="text-white font-bebas text-lg tracking-wider">
+              {market.labelYes}
             </span>
-          )}
-        </div>
-
-        <div className="flex items-center justify-between">
-          <div className="flex-1">
-            <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">YES</div>
-            <div className="text-lg font-bold text-green-600 dark:text-green-400">
-              {(market.priceYes * 100).toFixed(0)}%
-            </div>
           </div>
-
-          <div className="flex-1 text-right">
-            <div className="text-xs text-gray-500 dark:text-gray-400 mb-1">NO</div>
-            <div className="text-lg font-bold text-red-600 dark:text-red-400">
-              {(market.priceNo * 100).toFixed(0)}%
-            </div>
+          <div
+            className="rounded-lg py-2.5 px-3 text-center shadow-md"
+            style={{ background: '#234BC29E', border: '2px solid #C8DBFF52' }}
+          >
+            <span className="text-white font-bebas text-lg tracking-wider">
+              {market.labelNo}
+            </span>
           </div>
         </div>
 
-        <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-          <span>⏱ {formatDate(market.endDate)}</span>
-          <span>💰 {market.totalLiquidity.toLocaleString()}</span>
+        {/* Bottom Info */}
+        <div className="flex items-center justify-between text-gray-400 text-xs font-archivo">
+          <div className="flex items-center space-x-2">
+            {/* Trading Count */}
+            <span className="font-semibold">
+              +{market.volumeYes > 0 ? formatVolume(market.volumeYes + market.volumeNo) : '0'}
+            </span>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            {/* Volume */}
+            <span className="font-semibold">
+              {formatVolume(market.totalLiquidity)}
+            </span>
+
+            {/* Date */}
+            <div className="flex items-center space-x-1">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                <path strokeLinecap="round" strokeWidth="2" d="M12 6v6l4 2" />
+              </svg>
+              <span>{formatDate(market.endDate)}</span>
+            </div>
+          </div>
         </div>
       </div>
-    </Card>
+    </div>
   );
 }

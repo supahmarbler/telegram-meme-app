@@ -13,12 +13,12 @@ export function ReferralsPage() {
   return (
     <AppLayout>
       <div className="p-4 pb-20">
-        <h1 className="text-2xl font-bold mb-6">Referrals</h1>
+        <h1 className="text-3xl font-bebas mb-6 text-white tracking-wider">REFERRALS</h1>
 
         {isLoading ? (
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600 dark:text-gray-400">Loading stats...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-400">Loading stats...</p>
           </div>
         ) : (
           <div className="space-y-6">
@@ -29,20 +29,20 @@ export function ReferralsPage() {
 
             {userId && <ShareButton userId={userId} />}
 
-            <div className="bg-blue-50 dark:bg-blue-900 p-4 rounded-lg">
-              <h3 className="font-bold mb-2">How it works</h3>
-              <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+            <div className="bg-gradient-to-br from-blue-900 to-blue-800 p-4 rounded-xl border border-blue-700 shadow-lg">
+              <h3 className="font-black mb-3 text-white uppercase tracking-wide">How it works</h3>
+              <ul className="space-y-3 text-sm text-blue-200">
                 <li className="flex items-start">
-                  <span className="mr-2">1️⃣</span>
-                  <span>Share your unique referral link with friends</span>
+                  <span className="mr-2 text-xl">1️⃣</span>
+                  <span className="font-semibold">Share your unique referral link with friends</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="mr-2">2️⃣</span>
-                  <span>When they sign up, you both get bonus points</span>
+                  <span className="mr-2 text-xl">2️⃣</span>
+                  <span className="font-semibold">When they sign up, you both get bonus points</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="mr-2">3️⃣</span>
-                  <span>Earn extra rewards for every friend who joins</span>
+                  <span className="mr-2 text-xl">3️⃣</span>
+                  <span className="font-semibold">Earn extra rewards for every friend who joins</span>
                 </li>
               </ul>
             </div>

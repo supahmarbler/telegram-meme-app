@@ -106,7 +106,7 @@ export function MarketCard({ market }: MarketCardProps) {
           >
             <span
               className="text-white font-jersey text-lg tracking-wider uppercase"
-              style={{ transform: 'translateY(1px)' }}
+              style={{ transform: 'translateY(5px)' }}
             >
               {market.labelYes}
             </span>

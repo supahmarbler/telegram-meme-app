@@ -19,7 +19,7 @@ let users = {};
 let markets = [];
 let userBalances = {};
 
-// Initialize mock markets (based on real meme.com markets)
+// Initialize mock markets (real data from meme.com API - fetched 2026-02-04)
 function initializeMockMarkets() {
   markets = [
     {
@@ -32,10 +32,10 @@ function initializeMockMarkets() {
       ending_date: "2026-02-28T22:59:00Z",
       status: "OPEN",
       result: null,
-      total_yes_shares: 5851036.509,
-      total_no_shares: 3255554.506,
+      total_yes_shares: 5890322.492,
+      total_no_shares: 4053379.809,
       liquidity: 2000000.0,
-      users_trading_count: 413,
+      users_trading_count: 415,
       user_position: null
     },
     {
@@ -48,8 +48,8 @@ function initializeMockMarkets() {
       ending_date: "2026-02-10T00:00:00Z",
       status: "OPEN",
       result: null,
-      total_yes_shares: 14341472.185,
-      total_no_shares: 11798139.856,
+      total_yes_shares: 14382376.735,
+      total_no_shares: 11780156.5,
       liquidity: 2000000.0,
       users_trading_count: 505,
       user_position: null
@@ -65,41 +65,41 @@ function initializeMockMarkets() {
       status: "OPEN",
       result: null,
       total_yes_shares: 13408546.037,
-      total_no_shares: 14512490.703,
+      total_no_shares: 14517216.103,
       liquidity: 2000000.0,
-      users_trading_count: 751,
+      users_trading_count: 752,
       user_position: null
     },
     {
       market_id: 69,
       title: "$TURBO vs. $WHITEWHALE higher MC on Feb 7th EOD",
-      description: "According to CoinGecko live chart, which will have a higher market cap $TURBO or $WHITEWHALE (solana) on February 7th, 2026 11:59 PM UTC",
-      image_url: "https://cdn-v2.meme.com//uploaded_images/prediction_market/2026-02-01/1770002208878.webp",
+      description: "According to CoinGecko, which will be higher marketcap February 7th, 2025 @ 11:59 PM UTC",
+      image_url: "https://cdn-v2.meme.com//uploaded_images/prediction_market/2026-01-30/1769807198057.webp",
       label_yes: "$TURBO",
       label_no: "$WHITEWHALE",
       ending_date: "2026-02-08T00:00:00Z",
       status: "OPEN",
       result: null,
-      total_yes_shares: 7985124.321,
-      total_no_shares: 8124567.890,
-      liquidity: 2000000.0,
-      users_trading_count: 389,
+      total_yes_shares: 7148650.173,
+      total_no_shares: 7016193.927,
+      liquidity: 5000000.0,
+      users_trading_count: 529,
       user_position: null
     },
     {
       market_id: 68,
       title: "Memecoin on Las Vegas Sphere in 2026",
-      description: "Will any memecoin project advertise on the Las Vegas Sphere in 2026?",
-      image_url: "https://cdn-v2.meme.com//uploaded_images/prediction_market/2026-01-30/1769950123456.webp",
+      description: "By midnight December 31st, 2026 2 00:00UTC will a memecoinbe displayed on the Las Vegas Sphere in Nevada USA.",
+      image_url: "https://cdn-v2.meme.com//uploaded_images/prediction_market/2026-01-30/1769795685691.webp",
       label_yes: "YES",
       label_no: "NO",
-      ending_date: "2026-12-31T23:59:00Z",
+      ending_date: "2027-01-01T00:00:00Z",
       status: "OPEN",
       result: null,
-      total_yes_shares: 6234987.654,
-      total_no_shares: 7890123.456,
-      liquidity: 2000000.0,
-      users_trading_count: 567,
+      total_yes_shares: 8522112.774,
+      total_no_shares: 3794049.201,
+      liquidity: 5000000.0,
+      users_trading_count: 829,
       user_position: null
     }
   ];

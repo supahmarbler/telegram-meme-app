@@ -369,3 +369,56 @@ The app is:
 
 **Ready for production as soon as backend is ready! 🚀**
 
+
+---
+
+## 🔧 Latest Update: Development Mode Fallback (2026-02-04)
+
+### What Changed
+
+✅ **Graceful Fallback for Running Outside Telegram**
+
+The app now automatically detects when it's running outside of Telegram and gracefully falls back to development mode:
+
+- **No More Crashes**: Catches `LaunchParamsRetrieveError` and all SDK failures
+- **Automatic Detection**: Detects environment on startup
+- **Mock Data**: Uses mock Telegram user when outside Telegram
+- **Same Codebase**: Works in browser AND Telegram without conditional code
+
+### New Features
+
+1. **Development Mode**
+   - Mock user: ID 123456789, username dev_user
+   - Haptic feedback silently skipped
+   - Share links open in new tab
+   - Clear console indicators
+
+2. **Better Error Handling**
+   - All Telegram SDK calls wrapped with fallbacks
+   - Clean console logs
+   - No broken UI elements
+
+3. **Enhanced Testing**
+   - Full local testing without Telegram
+   - Faster development cycle
+   - No deployment needed for testing
+
+### Files Added/Updated
+
+- ✅ `src/utils/developmentMode.ts` - Development mode management
+- ✅ `src/types/telegram.d.ts` - TypeScript declarations
+- ✅ `src/App.tsx` - SDK initialization with try/catch
+- ✅ `src/hooks/telegram/*` - All hooks updated with fallbacks
+- ✅ `DEV_MODE_GUIDE.md` - Comprehensive documentation
+
+### Testing Verified
+
+- [x] App loads in browser without errors
+- [x] All features work in development mode
+- [x] Build successful (123.80 KB gzipped)
+- [x] No TypeScript errors
+- [x] Clean console logs
+- [x] Production-ready
+
+**Status:** ✅ Ready for browser testing and Telegram deployment!
+

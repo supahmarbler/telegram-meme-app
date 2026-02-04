@@ -104,7 +104,10 @@ export function MarketCard({ market }: MarketCardProps) {
             className="rounded-lg px-3 flex items-center justify-center shadow-md h-[38px]"
             style={{ background: '#71BAFF8A', border: 'none' }}
           >
-            <span className="text-white font-jersey text-lg tracking-wider uppercase">
+            <span
+              className="text-white font-jersey text-lg tracking-wider uppercase"
+              style={{ transform: 'translateY(1px)' }}
+            >
               {market.labelYes}
             </span>
           </div>

@@ -101,18 +101,18 @@ export function MarketCard({ market }: MarketCardProps) {
         {/* Option Buttons */}
         <div className="grid grid-cols-2 gap-2 mb-3">
           <div
-            className="rounded-lg py-2.5 px-3 flex items-center justify-center shadow-md"
-            style={{ background: '#71BAFF8A', border: '2px solid transparent' }}
+            className="rounded-lg px-3 flex items-center justify-center shadow-md h-[38px]"
+            style={{ background: '#71BAFF8A', border: 'none' }}
           >
-            <span className="text-white font-bebas text-lg tracking-wider">
+            <span className="text-white font-bebas text-lg tracking-wider uppercase">
               {market.labelYes}
             </span>
           </div>
           <div
-            className="rounded-lg py-2.5 px-3 flex items-center justify-center shadow-md"
-            style={{ background: '#234BC29E', border: '2px solid #C8DBFF52' }}
+            className="rounded-lg px-3 flex items-center justify-center shadow-md h-[38px]"
+            style={{ background: '#234BC29E', border: '2.16px solid #C8DBFF52' }}
           >
-            <span className="text-white font-bebas text-lg tracking-wider">
+            <span className="text-white font-bebas text-lg tracking-wider uppercase">
               {market.labelNo}
             </span>
           </div>

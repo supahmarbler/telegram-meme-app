@@ -1,5 +1,12 @@
 import apiClient from '../client';
-import type { GetMarketsResponse, PlaceBetRequest, PlaceBetResponse, PredictionMarket } from '../types';
+import type {
+  GetMarketsResponse,
+  ApiGetMarketsResponse,
+  PlaceBetRequest,
+  PlaceBetResponse,
+  PredictionMarket
+} from '../types';
+import { mapApiMarketToMarket } from '../types';
 
 export const predictionsAPI = {
   getMarkets: async (params?: {
@@ -7,14 +14,23 @@ export const predictionsAPI = {
     limit?: number;
     status?: 'OPEN' | 'CLOSED' | 'RESOLVED';
   }): Promise<GetMarketsResponse> => {
-    const response = await apiClient.get<GetMarketsResponse>('/prediction_markets/get_markets', {
+    const response = await apiClient.get<ApiGetMarketsResponse>('/prediction_markets/get_markets', {
       params: {
-        page: params?.page || 1,
-        limit: params?.limit || 20,
+        page: params?.page,
+        limit: params?.limit,
         status: params?.status,
       },
     });
-    return response.data;
+
+    // Map API response to internal structure
+    const markets = response.data.items.map(mapApiMarketToMarket);
+
+    return {
+      markets,
+      total: markets.length,
+      page: params?.page || 1,
+      limit: params?.limit || 20,
+    };
   },
 
   getMarketById: async (marketId: number): Promise<PredictionMarket> => {

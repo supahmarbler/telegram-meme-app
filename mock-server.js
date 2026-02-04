@@ -19,53 +19,88 @@ let users = {};
 let markets = [];
 let userBalances = {};
 
-// Initialize mock markets
+// Initialize mock markets (based on real meme.com markets)
 function initializeMockMarkets() {
   markets = [
     {
-      id: 1,
-      title: "Will Dogecoin reach $1 by end of 2026?",
-      description: "Predict if DOGE will hit $1 USD",
-      imageUrl: "https://picsum.photos/seed/doge/400/300",
-      endDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+      market_id: 72,
+      title: "Will Beeple Tweet a Dick Butt by End of February",
+      description: "Will @Beeple post on X a Dick Butt or a Dick Butt related image or mention before February 28th, 2026 23:59UTC",
+      image_url: "https://cdn-v2.meme.com//uploaded_images/prediction_market/2026-02-03/1770130407619.webp",
+      label_yes: "YES",
+      label_no: "NO",
+      ending_date: "2026-02-28T22:59:00Z",
       status: "OPEN",
-      totalLiquidity: 150000,
-      priceYes: 0.35,
-      priceNo: 0.65,
-      volumeYes: 52500,
-      volumeNo: 97500,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      result: null,
+      total_yes_shares: 5851036.509,
+      total_no_shares: 3255554.506,
+      liquidity: 2000000.0,
+      users_trading_count: 413,
+      user_position: null
     },
     {
-      id: 2,
-      title: "Will Pepe become top 10 crypto?",
-      description: "Will PEPE enter top 10 by market cap?",
-      imageUrl: "https://picsum.photos/seed/pepe/400/300",
-      endDate: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toISOString(),
+      market_id: 71,
+      title: "$POPCAT or $MOODENG higher token price on Feb 9th EOD.",
+      description: "According to CoinGecko live charts, which will have a higher token price $POPCAT or $MOODENG (solana) on February 9th, 2026 11:59 PM UTC",
+      image_url: "https://cdn-v2.meme.com//uploaded_images/prediction_market/2026-02-02/1770050838807.webp",
+      label_yes: "$POPCAT",
+      label_no: "$MOODENG",
+      ending_date: "2026-02-10T00:00:00Z",
       status: "OPEN",
-      totalLiquidity: 89000,
-      priceYes: 0.42,
-      priceNo: 0.58,
-      volumeYes: 37380,
-      volumeNo: 51620,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      result: null,
+      total_yes_shares: 14341472.185,
+      total_no_shares: 11798139.856,
+      liquidity: 2000000.0,
+      users_trading_count: 505,
+      user_position: null
     },
     {
-      id: 3,
-      title: "Will Shiba Inu burn 50% supply this year?",
-      description: "Predict if SHIB will burn half its tokens",
-      imageUrl: "https://picsum.photos/seed/shib/400/300",
-      endDate: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000).toISOString(),
+      market_id: 70,
+      title: "Will $BITCOIN be over a $25m MC EOD Feb 5th",
+      description: "According to CoinGecko live chart, will $BITCOIN be @ or above a $25m MC Feb 5th, 2026 11:59 PM UTC",
+      image_url: "https://cdn-v2.meme.com//uploaded_images/prediction_market/2026-02-02/1770044344228.webp",
+      label_yes: "YES",
+      label_no: "NO",
+      ending_date: "2026-02-06T00:00:00Z",
       status: "OPEN",
-      totalLiquidity: 120000,
-      priceYes: 0.28,
-      priceNo: 0.72,
-      volumeYes: 33600,
-      volumeNo: 86400,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      result: null,
+      total_yes_shares: 13408546.037,
+      total_no_shares: 14512490.703,
+      liquidity: 2000000.0,
+      users_trading_count: 751,
+      user_position: null
+    },
+    {
+      market_id: 69,
+      title: "$TURBO vs. $WHITEWHALE higher MC on Feb 7th EOD",
+      description: "According to CoinGecko live chart, which will have a higher market cap $TURBO or $WHITEWHALE (solana) on February 7th, 2026 11:59 PM UTC",
+      image_url: "https://cdn-v2.meme.com//uploaded_images/prediction_market/2026-02-01/1770002208878.webp",
+      label_yes: "$TURBO",
+      label_no: "$WHITEWHALE",
+      ending_date: "2026-02-08T00:00:00Z",
+      status: "OPEN",
+      result: null,
+      total_yes_shares: 7985124.321,
+      total_no_shares: 8124567.890,
+      liquidity: 2000000.0,
+      users_trading_count: 389,
+      user_position: null
+    },
+    {
+      market_id: 68,
+      title: "Memecoin on Las Vegas Sphere in 2026",
+      description: "Will any memecoin project advertise on the Las Vegas Sphere in 2026?",
+      image_url: "https://cdn-v2.meme.com//uploaded_images/prediction_market/2026-01-30/1769950123456.webp",
+      label_yes: "YES",
+      label_no: "NO",
+      ending_date: "2026-12-31T23:59:00Z",
+      status: "OPEN",
+      result: null,
+      total_yes_shares: 6234987.654,
+      total_no_shares: 7890123.456,
+      liquidity: 2000000.0,
+      users_trading_count: 567,
+      user_position: null
     }
   ];
 }
@@ -163,10 +198,7 @@ app.get('/prediction_markets/get_markets', (req, res) => {
   }
 
   res.json({
-    markets: paginatedMarkets,
-    total: filteredMarkets.length,
-    page: parseInt(page),
-    limit: parseInt(limit)
+    items: paginatedMarkets
   });
 });
 

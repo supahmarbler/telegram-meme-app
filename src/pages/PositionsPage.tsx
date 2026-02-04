@@ -6,7 +6,7 @@ import { Button } from '../components/ui/Button';
 
 export function PositionsPage() {
   const navigate = useNavigate();
-  const { data, isLoading } = useMarkets('active');
+  const { data, isLoading } = useMarkets('OPEN');
 
   const allMarkets = data?.pages.flatMap((page) => page.markets) || [];
   const marketsWithPositions = allMarkets.filter(

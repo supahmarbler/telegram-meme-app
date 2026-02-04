@@ -28,7 +28,7 @@ function initializeMockMarkets() {
       description: "Predict if DOGE will hit $1 USD",
       imageUrl: "https://picsum.photos/seed/doge/400/300",
       endDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-      status: "active",
+      status: "OPEN",
       totalLiquidity: 150000,
       priceYes: 0.35,
       priceNo: 0.65,
@@ -43,7 +43,7 @@ function initializeMockMarkets() {
       description: "Will PEPE enter top 10 by market cap?",
       imageUrl: "https://picsum.photos/seed/pepe/400/300",
       endDate: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toISOString(),
-      status: "active",
+      status: "OPEN",
       totalLiquidity: 89000,
       priceYes: 0.42,
       priceNo: 0.58,
@@ -58,7 +58,7 @@ function initializeMockMarkets() {
       description: "Predict if SHIB will burn half its tokens",
       imageUrl: "https://picsum.photos/seed/shib/400/300",
       endDate: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000).toISOString(),
-      status: "active",
+      status: "OPEN",
       totalLiquidity: 120000,
       priceYes: 0.28,
       priceNo: 0.72,
@@ -130,7 +130,7 @@ app.post('/authentication/telegram_verify', (req, res) => {
 
 // GET /prediction_markets/get_markets
 app.get('/prediction_markets/get_markets', (req, res) => {
-  const { page = 1, limit = 20, status = 'active' } = req.query;
+  const { page = 1, limit = 20, status = 'OPEN' } = req.query;
 
   const filteredMarkets = markets.filter(m => m.status === status);
   const start = (page - 1) * limit;

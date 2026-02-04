@@ -2,7 +2,7 @@ import { useQuery, useInfiniteQuery } from '@tanstack/react-query';
 import { predictionsAPI } from '../../api/endpoints/predictions';
 import { REFRESH_INTERVALS } from '../../utils/constants';
 
-export function useMarkets(status?: 'active' | 'closed' | 'resolved') {
+export function useMarkets(status?: 'OPEN' | 'CLOSED' | 'RESOLVED') {
   return useInfiniteQuery({
     queryKey: ['markets', status],
     queryFn: ({ pageParam = 1 }) =>

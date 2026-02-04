@@ -5,7 +5,7 @@ export const predictionsAPI = {
   getMarkets: async (params?: {
     page?: number;
     limit?: number;
-    status?: 'active' | 'closed' | 'resolved';
+    status?: 'OPEN' | 'CLOSED' | 'RESOLVED';
   }): Promise<GetMarketsResponse> => {
     const response = await apiClient.get<GetMarketsResponse>('/prediction_markets/get_markets', {
       params: {

@@ -28,7 +28,7 @@ export interface PredictionMarket {
   description: string;
   imageUrl?: string;
   endDate: string;
-  status: 'active' | 'closed' | 'resolved';
+  status: 'OPEN' | 'CLOSED' | 'RESOLVED';
   totalLiquidity: number;
   priceYes: number;
   priceNo: number;

@@ -8,7 +8,7 @@ type FilterTab = 'active' | 'my-bets';
 
 export function MarketsPage() {
   const [activeTab, setActiveTab] = useState<FilterTab>('active');
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useMarkets('active');
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useMarkets('OPEN');
 
   const allMarkets = data?.pages.flatMap((page) => page.markets) || [];
   const displayedMarkets = activeTab === 'my-bets'

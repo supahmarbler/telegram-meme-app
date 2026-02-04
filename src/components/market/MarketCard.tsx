@@ -104,10 +104,7 @@ export function MarketCard({ market }: MarketCardProps) {
             className="rounded-lg px-3 flex items-center justify-center shadow-md h-[38px]"
             style={{ background: '#71BAFF8A', border: 'none' }}
           >
-            <span
-              className="text-white font-bebas text-lg tracking-wider uppercase leading-none block"
-              style={{ transform: 'translateY(2px)' }}
-            >
+            <span className="text-white font-jersey text-lg tracking-wider uppercase">
               {market.labelYes}
             </span>
           </div>
@@ -115,10 +112,7 @@ export function MarketCard({ market }: MarketCardProps) {
             className="rounded-lg px-3 flex items-center justify-center shadow-md h-[38px]"
             style={{ background: '#234BC29E', border: '2.16px solid #C8DBFF52' }}
           >
-            <span
-              className="text-white font-bebas text-lg tracking-wider uppercase leading-none block"
-              style={{ transform: 'translateY(2px)' }}
-            >
+            <span className="text-white font-jersey text-lg tracking-wider uppercase">
               {market.labelNo}
             </span>
           </div>
